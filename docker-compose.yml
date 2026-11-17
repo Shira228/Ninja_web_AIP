@@ -1,0 +1,19 @@
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - ninja_mongo:/data/db
+  web:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      MONGODB_URI: mongodb://mongo:27017/ninja_world
+      SESSION_SECRET: change-this-secret-before-deployment
+    depends_on:
+      - mongo
+volumes:
+  ninja_mongo:
