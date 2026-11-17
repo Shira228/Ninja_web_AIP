@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+const app = require('../app');
+const http = require('http');
+
+const port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+const server = http.createServer(app);
+server.listen(port);
+server.on('error', (error) => {
+  if (error.syscall !== 'listen') throw error;
+  const bind = typeof port === 'string' ? `Pipe ${port}` : `Port ${port}`;
+  if (error.code === 'EACCES') {
+    console.error(`${bind} requires elevated privileges`); process.exit(1);
+  }
+  if (error.code === 'EADDRINUSE') {
+    console.error(`${bind} is already in use`); process.exit(1);
+  }
+  throw error;
+});
+server.on('listening', () => console.log(`Ninja World запущен: http://localhost:${port}`));
+function normalizePort(value) {
+  const parsed = parseInt(value, 10);
+  if (Number.isNaN(parsed)) return value;
+  if (parsed >= 0) return parsed;
+  return false;
+}

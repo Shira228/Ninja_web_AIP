@@ -1,0 +1,25 @@
+<% layout('layouts/main') %>
+<section class="hero-section">
+  <div class="hero-noise"></div>
+  <div class="container hero-content">
+    <p class="eyebrow">ПУТЬ ТЕНИ · ПУТЬ ЧЕСТИ</p>
+    <h1>Тишина —<br><em>твоё главное оружие.</em></h1>
+    <p class="hero-copy">Погрузись в историю синоби, изучи легендарные образы и открой философию дисциплины, скрытности и мастерства.</p>
+    <div class="d-flex flex-wrap gap-3"><a class="btn btn-gold btn-lg" href="/library">Открыть архив <span>↗</span></a><a class="btn btn-outline-light btn-lg" href="/history">Изучить историю</a></div>
+    <div class="hero-stats"><div><strong>01</strong><span>История</span></div><div><strong>06</strong><span>Свитков в архиве</span></div><div><strong>∞</strong><span>Путь развития</span></div></div>
+  </div>
+  <div class="hero-mark">忍</div>
+</section>
+<section class="section-pad container">
+  <div class="section-heading"><div><p class="eyebrow">ЗНАНИЯ И ЛЕГЕНДЫ</p><h2>Лица скрытого мира</h2></div><a class="text-link" href="/library">Весь архив ↗</a></div>
+  <div class="row g-4">
+    <% featured.forEach((item, i) => { %>
+      <div class="col-md-4"><a class="ninja-card" href="/ninja/<%= item.nick %>"><div class="card-art"><img src="<%= item.avatar %>" alt="<%= item.title %>"><span class="card-index">0<%= i + 1 %></span></div><div class="card-body"><span class="eyebrow"><%= item.category %></span><h3><%= item.title %></h3><p><%= item.short %></p><span class="text-link">Читать свиток ↗</span></div></a></div>
+    <% }) %>
+  </div>
+</section>
+<section class="quote-band"><div class="container"><span>忍</span><blockquote>«Настоящее мастерство начинается там, где заканчивается суета».</blockquote><p>ПРИНЦИП NINJA WORLD</p></div></section>
+<section class="section-pad container">
+  <div class="section-heading"><div><p class="eyebrow">ПРАКТИКА</p><h2>Инструменты и техники</h2></div><a class="text-link" href="/library?category=Техники">Все техники ↗</a></div>
+  <div class="row g-4"><% techniques.forEach((item) => { %><div class="col-md-4"><a class="tech-row" href="/ninja/<%= item.nick %>"><img src="<%= item.avatar %>" alt=""><div><span class="eyebrow"><%= item.rank %></span><h3><%= item.title %></h3><p><%= item.short %></p></div><b>↗</b></a></div><% }) %></div>
+</section>

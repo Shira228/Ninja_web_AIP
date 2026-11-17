@@ -1,0 +1,7 @@
+<% layout('layouts/main') %>
+<section class="page-hero compact"><div class="container"><p class="eyebrow">БИБЛИОТЕКА СВИТКОВ</p><h1>Архив <em>ниндзя</em></h1><p>Персонажи, история и традиционные инструменты.</p></div></section>
+<section class="container section-pad">
+  <div class="filter-bar"><a class="<%= !selectedCategory ? 'selected' : '' %>" href="/library">Все</a><a class="<%= selectedCategory === 'История' ? 'selected' : '' %>" href="/library?category=История">История</a><a class="<%= selectedCategory === 'Персонажи' ? 'selected' : '' %>" href="/library?category=Персонажи">Персонажи</a><a class="<%= selectedCategory === 'Техники' ? 'selected' : '' %>" href="/library?category=Техники">Техники</a></div>
+  <div class="row g-4"><% ninjas.forEach((item, i) => { %><div class="col-md-6 col-lg-4"><a class="ninja-card" href="/ninja/<%= item.nick %>"><div class="card-art"><img src="<%= item.avatar %>" alt="<%= item.title %>"><span class="card-index">№ <%= String(i + 1).padStart(2, '0') %></span></div><div class="card-body"><span class="eyebrow"><%= item.category %></span><h3><%= item.title %></h3><p><%= item.short %></p><span class="text-link">Открыть ↗</span></div></a></div><% }) %></div>
+  <% if (!ninjas.length) { %><p>В этой категории пока нет записей.</p><% } %>
+</section>
